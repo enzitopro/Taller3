@@ -1,17 +1,17 @@
 package dominio;
 
 public class HechizoAgua extends Hechizo {
-	private int CantidadHeal;
-	private int PresionDeAgua;
-	public HechizoAgua(String nombre, String tipo, int dano, int CantidadHeal, int PresionDeAgua) {
+	private int cantidadHeal;
+	private int presionDeAgua;
+	public HechizoAgua(String nombre, String tipo, int dano, int cantidadHeal, int presionDeAgua) {
 		super(nombre, tipo, dano);
-		this.CantidadHeal = CantidadHeal;
-		this.PresionDeAgua = PresionDeAgua;
+		this.cantidadHeal = cantidadHeal;
+		this.presionDeAgua = presionDeAgua;
 	}
 
 	@Override
 	public double calcularPuntuacion() {
-		return (this.dano+this.CantidadHeal+this.PresionDeAgua)*2;
+		return (this.dano+this.cantidadHeal+this.presionDeAgua)*2.0;
 	}
 
 }

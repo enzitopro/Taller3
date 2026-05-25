@@ -1,17 +1,17 @@
 package dominio;
 
 public class HechizoPlanta extends Hechizo {
-	private int DuracionStun;
-	private int CantPlanta;
-	public HechizoPlanta(String nombre, String tipo, int dano, int DuracionStun, int CantPlanta) {
+	private int duracionStun;
+	private int cantPlanta;
+	public HechizoPlanta(String nombre, String tipo, int dano, int duracionStun, int cantPlanta) {
 		super(nombre, tipo, dano);
-		this.DuracionStun = DuracionStun;
-		this.CantPlanta = CantPlanta;
+		this.duracionStun = duracionStun;
+		this.cantPlanta = cantPlanta;
 	}
 
 	@Override
 	public double calcularPuntuacion() {
-		return this.dano + (this.DuracionStun*this.CantPlanta);
+		return this.dano + (this.duracionStun*this.cantPlanta);
 	}
 
 }

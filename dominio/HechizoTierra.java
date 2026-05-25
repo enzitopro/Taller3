@@ -1,14 +1,14 @@
 package dominio;
 
 public class HechizoTierra extends Hechizo {
-	private int MejoraDefensa;
-	public HechizoTierra(String nombre, String tipo, int dano, int MejoraDefensa) {
+	private int mejoraDefensa;
+	public HechizoTierra(String nombre, String tipo, int dano, int mejoraDefensa) {
 		super(nombre, tipo, dano);
-		this.MejoraDefensa = MejoraDefensa;
+		this.mejoraDefensa = mejoraDefensa;
 	}
 	@Override
 	public double calcularPuntuacion() {
-		return (this.dano*this.MejoraDefensa)/2;
+		return (this.dano*this.mejoraDefensa)/2.0;
 	}
 
 }
