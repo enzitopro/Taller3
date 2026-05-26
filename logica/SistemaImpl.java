@@ -65,6 +65,36 @@ public class SistemaImpl implements ISistema {
 
 	@Override
 	public void cargarMagos() {
+		try {
+			File magos = new File("Magos.txt");
+			Scanner lectorMagos = new Scanner(magos);
+			while (lectorMagos.hasNextLine()) {
+				String linea = lectorMagos.nextLine();
+				String[] partesMago = linea.split(";");
+				String nombre = partesMago[0];
+				Mago nuevoMago = new Mago(nombre);	
+				String magoHechizos = partesMago[1];
+				String[] nombresHechizos = magoHechizos.split("\\|");
+				for (int i=0; i < nombresHechizos.length; i++) {
+					Hechizo hechizoEncontrado = buscarHechizo(nombresHechizos[i]);
+					if (hechizoEncontrado != null) {
+						nuevoMago.getListaHechizos().add(hechizoEncontrado);
+					}
+				}
+				listaGlobalMagos.add(nuevoMago);
+			}
+			lectorMagos.close();
+		} catch (Exception e) {
+			System.out.println("Archivo no encontrado");
+		}
+	}
 	
+	private Hechizo buscarHechizo(String nombreBuscado) {
+		for (Hechizo hechizo : listaGlobalHechizos) {
+			if (hechizo.getNombre().equalsIgnoreCase(nombreBuscado)) {
+				return hechizo;
+			}
+		}
+		return null;
 	}
 }
