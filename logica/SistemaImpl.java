@@ -60,7 +60,7 @@ public class SistemaImpl implements ISistema {
 		} catch (Exception e) {
 			System.out.println("Archivo no encontrado");
 		}
-		
+		// System.out.println("EXITO: Se han cargado "+listaGlobalHechizos.size()+ " hechizos en el sistema");
 	}
 
 	@Override
@@ -87,6 +87,7 @@ public class SistemaImpl implements ISistema {
 		} catch (Exception e) {
 			System.out.println("Archivo no encontrado");
 		}
+		// System.out.println("EXITO: Se han cargado:"+listaGlobalMagos.size()+" magos en el sistema");
 	}
 	
 	private Hechizo buscarHechizo(String nombreBuscado) {
@@ -96,5 +97,46 @@ public class SistemaImpl implements ISistema {
 			}
 		}
 		return null;
+	}
+
+	@Override
+	public void mostrarTodosHechizos(boolean mostrarPuntaje) {
+		for (int i=0; i<listaGlobalHechizos.size();i++) {
+			for (int j=0;j<listaGlobalHechizos.size();i++) {
+				Hechizo hechizo1 = listaGlobalHechizos.get(i);
+				Hechizo hechizo2 = listaGlobalHechizos.get(j);
+				
+				if (hechizo1.calcularPuntuacion() > hechizo2.calcularPuntuacion()) {
+					Hechizo temp = hechizo1;
+					listaGlobalHechizos.set(i, hechizo2);
+					listaGlobalHechizos.set(j, temp);
+				}
+			}
+		}
+		System.out.println("--- TOP 10 HECHIZOS ---");
+		int limite = Math.min(10, listaGlobalHechizos.size());
+		for (int i=0; i<limite;i++) {
+			Hechizo h = listaGlobalHechizos.get(i);
+			System.out.println((i+1)+ ". "+h.getNombre()+" - Puntos: "+h.calcularPuntuacion());
+		}
+		
+	}
+
+	@Override
+	public void mostrarTodosMagos(boolean mostrarPuntaje) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mostrarTopHechizos() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void mostrarTopMagos() {
+		// TODO Auto-generated method stub
+		
 	}
 }
