@@ -101,8 +101,34 @@ public class SistemaImpl implements ISistema {
 
 	@Override
 	public void mostrarTodosHechizos(boolean mostrarPuntaje) {
-		for (int i=0; i<listaGlobalHechizos.size();i++) {
-			for (int j=0;j<listaGlobalHechizos.size();i++) {
+		System.out.println("--- LISTA DE HECHIZOS ---");
+		for (Hechizo hechizo : listaGlobalHechizos) {
+			if (mostrarPuntaje) {
+				System.out.println("Nombre: " + hechizo.getNombre() + " - Puntaje: " + hechizo.calcularPuntuacion());
+			} else {
+				System.out.println("Nombre: " + hechizo.getNombre());
+			}
+		}
+		System.out.println("-------------------");
+	}
+
+	@Override
+	public void mostrarTodosMagos(boolean mostrarPuntaje) {
+		System.out.println("--- LISTA DE MAGOS ---");
+		for (Mago mago : listaGlobalMagos) {
+			if (mostrarPuntaje) {
+				System.out.println("Nombre: " + mago.getNombre() + " - Puntaje: "+ mago.calcularPuntajeTotal());
+			} else {
+				System.out.println("Nombre: " + mago.getNombre());
+			}
+		}
+		System.out.println("-------------------");
+	}
+
+	@Override
+	public void mostrarTopHechizos() {
+		for (int i=0; i<listaGlobalHechizos.size()-1;i++) {
+			for (int j=0;j<listaGlobalHechizos.size();j++) {
 				Hechizo hechizo1 = listaGlobalHechizos.get(i);
 				Hechizo hechizo2 = listaGlobalHechizos.get(j);
 				
@@ -119,24 +145,28 @@ public class SistemaImpl implements ISistema {
 			Hechizo h = listaGlobalHechizos.get(i);
 			System.out.println((i+1)+ ". "+h.getNombre()+" - Puntos: "+h.calcularPuntuacion());
 		}
-		
-	}
-
-	@Override
-	public void mostrarTodosMagos(boolean mostrarPuntaje) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void mostrarTopHechizos() {
-		// TODO Auto-generated method stub
-		
+		System.out.println("-------------------");
 	}
 
 	@Override
 	public void mostrarTopMagos() {
-		// TODO Auto-generated method stub
-		
+		for (int i=0; i<listaGlobalMagos.size()-1;i++) {
+			for (int j=0; j<listaGlobalMagos.size();j++) {
+				Mago mago1 = listaGlobalMagos.get(i);
+				Mago mago2 = listaGlobalMagos.get(j);
+				if (mago1.calcularPuntajeTotal()>mago2.calcularPuntajeTotal()) {
+					Mago temp = mago1;
+					listaGlobalMagos.set(i, mago2);
+					listaGlobalMagos.set(j, temp);
+				}
+			}
+		}
+		System.out.println("--- TOP 3 MAGOS ---");
+		int limite = Math.min(3, listaGlobalHechizos.size());
+		for (int i=0; i<limite;i++) {
+			Mago m = listaGlobalMagos.get(i);
+			System.out.println((i+1)+". "+m.getNombre()+" - Puntos: "+m.calcularPuntajeTotal());
+		}
+		System.out.println("-------------------");
 	}
 }

@@ -26,22 +26,37 @@ public class Main {
 					System.out.println("4. Agregar Hechizo");
 					System.out.println("5. Modificar Hechizo");
 					System.out.println("6. Eliminar Hechizo");
-					System.out.println("7. Volver");
 					break;
 				case 2:
 					System.out.println("1. Top 10 Mejores Hechizos");
 					System.out.println("2. Top 3 Mejores Magos");
 					System.out.println("3. Mostrar todos los hechizos");
 					System.out.println("4. Mostrar todos los magos");
-					System.out.println("5 Mostrar todos los Hechizos junto a su puntuación");
+					System.out.println("5. Mostrar todos los Hechizos junto a su puntuación");
 					System.out.println("6. Mostrar todos los magos junto a su puntuación");
-					System.out.println("7. Volver");
 					System.out.print("> ");
 					int opcionAnalista = Integer.valueOf(lector.nextLine());
 					switch (opcionAnalista) {
 					case 1:
 						sistema.mostrarTopHechizos();
 						break;
+					case 2:
+						sistema.mostrarTopMagos();
+						break;
+					case 3:
+						sistema.mostrarTodosHechizos(false);
+						break;
+					case 4:
+						sistema.mostrarTodosMagos(false);
+						break;
+					case 5:
+						sistema.mostrarTodosHechizos(true);
+						break;
+					case 6:
+						sistema.mostrarTodosMagos(true);
+						break;
+					default:
+						System.out.println("ERROR. Opcion no valida");
 					}
 					break;
 				case 3:
