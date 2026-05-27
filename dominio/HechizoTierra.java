@@ -10,5 +10,9 @@ public class HechizoTierra extends Hechizo {
 	public double calcularPuntuacion() {
 		return (this.dano*this.mejoraDefensa)/2.0;
 	}
+	@Override
+	public String generarLineaArchivo() {
+		return this.nombre + ";" + this.tipo + ";" + this.dano + ";" + this.mejoraDefensa;
+	}
 
 }

@@ -14,4 +14,9 @@ public class HechizoPlanta extends Hechizo {
 		return this.dano + (this.duracionStun*this.cantPlanta);
 	}
 
+	@Override
+	public String generarLineaArchivo() {
+		return this.nombre + ";" + this.tipo + ";" + this.dano + ";" + this.duracionStun + "," + this.cantPlanta;
+	}
+
 }

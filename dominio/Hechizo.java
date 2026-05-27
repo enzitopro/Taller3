@@ -11,6 +11,7 @@ public abstract class Hechizo implements IPuntuable {
 		this.tipo = tipo;
 		this.dano = dano;
 	}
+	public abstract String generarLineaArchivo();
 	
 	public String getNombre() {
 		return nombre;

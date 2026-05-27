@@ -26,6 +26,28 @@ public class Main {
 					System.out.println("4. Agregar Hechizo");
 					System.out.println("5. Modificar Hechizo");
 					System.out.println("6. Eliminar Hechizo");
+					System.out.print("> ");
+					int opcionAdmin = Integer.valueOf(lector.nextLine());
+					switch (opcionAdmin) {
+					case 1:
+						//agregarMago();
+						break;
+					case 2:
+						//modificarMago();
+						break;
+					case 3:
+						//eliminarMago();
+						break;
+					case 4:
+						agregarHechizo();
+						break;
+					case 5:
+						//modificarHechizo();
+						break;
+					case 6:
+						//eliminarHechizo();
+						break;
+					}
 					break;
 				case 2:
 					System.out.println("1. Top 10 Mejores Hechizos");

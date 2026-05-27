@@ -14,4 +14,9 @@ public class HechizoAgua extends Hechizo {
 		return (this.dano+this.cantidadHeal+this.presionDeAgua)*2.0;
 	}
 
+	@Override
+	public String generarLineaArchivo() {
+		return this.nombre + ";" + this.tipo + ";" + this.dano + ";" + this.cantidadHeal + "," + this.presionDeAgua;
+	}
+
 }

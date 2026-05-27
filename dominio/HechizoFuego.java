@@ -10,4 +10,8 @@ public class HechizoFuego extends Hechizo {
 	public double calcularPuntuacion() {
 		return this.dano * this.duracionQuemadura;
 	}
+	@Override
+	public String generarLineaArchivo() {
+		return this.nombre + ";" + this.tipo + ";" + this.dano + ";" + this.duracionQuemadura;
+	}
 }
