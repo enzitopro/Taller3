@@ -39,7 +39,40 @@ public class Main {
 						//eliminarMago();
 						break;
 					case 4:
-						agregarHechizo();
+						System.out.println("--- AGREGAR NUEVO HECHIZO ---");
+						System.out.print("Ingrese el nombre del hechizo: ");
+						String nombreNuevo = lector.nextLine();
+						
+						System.out.print("Ingrese el tipo (Fuego, Agua, Planta, Tierra): ");
+						String tipoNuevo = lector.nextLine();
+						
+						System.out.print("Ingrese el daño base: ");
+						int danoNuevo = Integer.valueOf(lector.nextLine());
+						
+						if (tipoNuevo.equalsIgnoreCase("fuego")) {
+							System.out.print("Ingrese la duracion de la quemadura: ");
+							int duracion = Integer.valueOf(lector.nextLine());
+							sistema.agregarHechizoFuego(nombreNuevo, tipoNuevo, danoNuevo, duracion);
+						}
+						else if (tipoNuevo.equalsIgnoreCase("tierra")) {
+							System.out.print("Ingrese el aumento de defensa: ");
+							int mejora = Integer.valueOf(lector.nextLine());
+							sistema.agregarHechizoTierra(nombreNuevo, tipoNuevo, danoNuevo, mejora);
+						}
+						else if (tipoNuevo.equalsIgnoreCase("agua")) {
+							System.out.print("Ingrese la cantidad de heal: ");
+							int heal = Integer.valueOf(lector.nextLine());
+							System.out.print("Ingrese la presion de agua: ");
+							int presion = Integer.valueOf(lector.nextLine());
+							sistema.agregarHechizoAgua(nombreNuevo, tipoNuevo, danoNuevo, heal, presion);
+						}
+						else if (tipoNuevo.equalsIgnoreCase("planta")) {
+							System.out.print("Ingrese la duracion del stun: ");
+							int stun = Integer.valueOf(lector.nextLine());
+							System.out.print("Ingrese la cantidad de planta: ");
+							int planta = Integer.valueOf(lector.nextLine());
+							sistema.agregarHechizoPlanta(nombreNuevo, tipoNuevo, danoNuevo, stun, planta);
+						}
 						break;
 					case 5:
 						//modificarHechizo();
