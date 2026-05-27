@@ -7,4 +7,8 @@ public interface ISistema {
 	void mostrarTodosMagos(boolean mostrarPuntaje);
 	void mostrarTopHechizos();
 	void mostrarTopMagos();
+	void agregarHechizoFuego(String nombre, String tipo, int dano, int duracionQuemadura);
+	void agregarHechizoTierra(String nombre, String tipo, int dano, int mejoraDefensa);
+	void agregarHechizoPlanta(String nombre, String tipo, int dano, int duracionStun, int cantPlanta);
+	void agregarHechizoAgua(String nombre, String tipo, int dano, int cantidadHeal, int presionDeAgua);
 }

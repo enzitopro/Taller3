@@ -6,7 +6,10 @@ import dominio.HechizoAgua;
 import dominio.HechizoPlanta;
 import dominio.HechizoTierra;
 import dominio.Mago;
+
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -168,5 +171,51 @@ public class SistemaImpl implements ISistema {
 			System.out.println((i+1)+". "+m.getNombre()+" - Puntos: "+m.calcularPuntajeTotal());
 		}
 		System.out.println("-------------------");
+	}
+	
+	private void actualizarArchivoHechizos() {
+		try {
+			FileWriter archivo = new FileWriter("Hechizos.txt");
+			BufferedWriter escritor = new BufferedWriter(archivo);
+			
+			for (Hechizo h : listaGlobalHechizos) {
+				escritor.write(h.generarLineaArchivo()); 
+				escritor.newLine();
+			}
+			
+			escritor.close();
+			System.out.println("Archivo de hechizos actualizado correctamente.");
+			
+		} catch (Exception e) {
+			System.out.println("Error al intentar escribir en el archivo.");
+		}
+	}
+
+	@Override
+	public void agregarHechizoFuego(String nombre, String tipo, int dano, int duracionQuemadura) {
+		Hechizo nuevoHechizoFuego = new HechizoFuego(nombre, tipo, dano, duracionQuemadura);
+		listaGlobalHechizos.add(nuevoHechizoFuego);
+		actualizarArchivoHechizos();
+	}
+
+	@Override
+	public void agregarHechizoTierra(String nombre, String tipo, int dano, int mejoraDefensa) {
+		Hechizo nuevoHechizoTierra = new HechizoTierra(nombre, tipo, dano, mejoraDefensa);
+		listaGlobalHechizos.add(nuevoHechizoTierra);
+		actualizarArchivoHechizos();
+	}
+
+	@Override
+	public void agregarHechizoPlanta(String nombre, String tipo, int dano, int duracionStun, int cantPlanta) {
+		Hechizo nuevoHechizoPlanta = new HechizoPlanta(nombre, tipo, dano, duracionStun, cantPlanta);
+		listaGlobalHechizos.add(nuevoHechizoPlanta);
+		actualizarArchivoHechizos();
+	}
+
+	@Override
+	public void agregarHechizoAgua(String nombre, String tipo, int dano, int cantidadHeal, int presionDeAgua) {
+		Hechizo nuevoHechizoAgua = new HechizoAgua(nombre, tipo, dano, cantidadHeal, presionDeAgua);
+		listaGlobalHechizos.add(nuevoHechizoAgua);
+		actualizarArchivoHechizos();
 	}
 }
