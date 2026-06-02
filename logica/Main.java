@@ -78,7 +78,13 @@ public class Main {
 						//modificarHechizo();
 						break;
 					case 6:
-						//eliminarHechizo();
+						System.out.print("Ingrese el nombre del hechizo a eliminar: ");
+						String nombre = lector.nextLine();
+						if (sistema.eliminarHechizo(nombre)) {
+							System.out.println("Se eliminó el hechizo "+nombre+"!");
+						} else {
+							System.out.println("No se pudo eliminar el hechizo "+nombre+"!");
+						}
 						break;
 					}
 					break;

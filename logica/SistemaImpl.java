@@ -218,4 +218,17 @@ public class SistemaImpl implements ISistema {
 		listaGlobalHechizos.add(nuevoHechizoAgua);
 		actualizarArchivoHechizos();
 	}
+
+	@Override
+	public boolean eliminarHechizo(String nombre) {
+		for (int i=0; i < listaGlobalHechizos.size(); i++) {
+			Hechizo hechizoActual = listaGlobalHechizos.get(i);
+			if (hechizoActual.getNombre().equalsIgnoreCase(nombre)) {
+				listaGlobalHechizos.remove(i);
+				actualizarArchivoHechizos();
+				return true;
+			}
+		}
+		return false;
+	}
 }

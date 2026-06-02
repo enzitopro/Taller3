@@ -11,4 +11,5 @@ public interface ISistema {
 	void agregarHechizoTierra(String nombre, String tipo, int dano, int mejoraDefensa);
 	void agregarHechizoPlanta(String nombre, String tipo, int dano, int duracionStun, int cantPlanta);
 	void agregarHechizoAgua(String nombre, String tipo, int dano, int cantidadHeal, int presionDeAgua);
+	boolean eliminarHechizo(String nombre);
 }
