@@ -35,5 +35,15 @@ public class Mago {
 		this.listaHechizos = listaHechizos;
 	}
 	
-	
+	public String generarLineaArchivo() {
+		String linea = this.nombre + ";";
+		for (int i=0; i < this.listaHechizos.size(); i++) {
+			linea += this.listaHechizos.get(i).getNombre();
+			
+			if (i < this.listaHechizos.size() - 1) {
+				linea += "|";
+			}
+		}
+		return linea;
+	}
 }

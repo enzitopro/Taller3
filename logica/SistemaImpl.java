@@ -190,6 +190,22 @@ public class SistemaImpl implements ISistema {
 			System.out.println("Error al intentar escribir en el archivo.");
 		}
 	}
+	
+	private void actualizarArchivoMagos() {
+		try {
+			FileWriter archivo = new FileWriter("Magos.txt");
+			BufferedWriter escritor = new BufferedWriter(archivo);
+			
+			for (Mago m : listaGlobalMagos) {
+				escritor.write(m.generarLineaArchivo());
+				escritor.newLine();
+			}
+			
+			escritor.close();
+		} catch (Exception e) {
+			System.out.println("Error al intentar escribir en el archivo.");
+		}
+	}
 
 	@Override
 	public void agregarHechizoFuego(String nombre, String tipo, int dano, int duracionQuemadura) {
@@ -244,4 +260,32 @@ public class SistemaImpl implements ISistema {
 		}
 		return false;
 	}
+
+	@Override
+	public void agregarMago(String nombre) {
+		Mago nuevoMago = new Mago(nombre);
+		listaGlobalMagos.add(nuevoMago);
+		actualizarArchivoMagos();
+	}
+
+	@Override
+	public boolean eliminarMago(String nombre) {
+		for (int i=0; i<listaGlobalMagos.size();i++) {
+			Mago magoActual = listaGlobalMagos.get(i);
+			
+			if (magoActual.getNombre().equalsIgnoreCase(nombre)) {
+				listaGlobalMagos.remove(i);
+				actualizarArchivoMagos();
+				return true;
+			}
+		}
+		return false;
+	}
+
+	@Override
+	public boolean modificarMago(String nombre) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }

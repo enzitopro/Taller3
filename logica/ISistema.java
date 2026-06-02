@@ -13,4 +13,7 @@ public interface ISistema {
 	void agregarHechizoAgua(String nombre, String tipo, int dano, int cantidadHeal, int presionDeAgua);
 	boolean eliminarHechizo(String nombre);
 	boolean modificarHechizo(String nombre, int nuevoDano);
+	void agregarMago(String nombre);
+	boolean modificarMago(String nombre);
+	boolean eliminarMago(String nombre);
 }
