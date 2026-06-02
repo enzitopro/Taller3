@@ -14,6 +14,8 @@ public interface ISistema {
 	boolean eliminarHechizo(String nombre);
 	boolean modificarHechizo(String nombre, int nuevoDano);
 	void agregarMago(String nombre);
-	boolean modificarMago(String nombre);
 	boolean eliminarMago(String nombre);
+	boolean modificarNombreMago(String nombreAntiguo, String nombreNuevo);
+	boolean aprenderHechizoMago(String nombreMago, String nombreHechizo);
+	boolean olvidarHechizoMago(String nombreMago, String nombreHechizo);
 }

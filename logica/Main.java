@@ -30,13 +30,17 @@ public class Main {
 					int opcionAdmin = Integer.valueOf(lector.nextLine());
 					switch (opcionAdmin) {
 					case 1:
-						//agregarMago();
+						System.out.print("Ingrese el nombre del nuevo mago: ");
+						String nombreMagoNuevo = lector.nextLine();
+						sistema.agregarMago(nombreMagoNuevo);
 						break;
 					case 2:
 						//modificarMago();
 						break;
 					case 3:
-						//eliminarMago();
+						System.out.print("Ingrese el nombre del mago a eliminar: ");
+						String nombreMagoEliminar = lector.nextLine();
+						sistema.eliminarMago(nombreMagoEliminar);
 						break;
 					case 4:
 						System.out.println("--- AGREGAR NUEVO HECHIZO ---");

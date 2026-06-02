@@ -283,7 +283,33 @@ public class SistemaImpl implements ISistema {
 	}
 
 	@Override
-	public boolean modificarMago(String nombre) {
+	public boolean modificarNombreMago(String nombreAntiguo, String nombreNuevo) {
+		for (int i=0; i<listaGlobalMagos.size();i++) {
+			Mago magoActual = listaGlobalMagos.get(i);
+			if (magoActual.getNombre().equalsIgnoreCase(nombreAntiguo)) {
+				magoActual.setNombre(nombreNuevo);
+				actualizarArchivoMagos();
+				return true;
+			}
+		}
+		return false;
+	}
+
+	@Override
+	public boolean aprenderHechizoMago(String nombreMago, String nombreHechizo) {
+		for (int i=0; i < listaGlobalMagos.size(); i++) {
+			Mago magoActual = listaGlobalMagos.get(i);
+			for (int j=0; j < listaGlobalHechizos.size();j++) {
+				Hechizo hechizoActual = listaGlobalHechizos.get(j);
+				
+			}
+			
+		}
+		return false;
+	}
+
+	@Override
+	public boolean olvidarHechizoMago(String nombreMago, String nombreHechizo) {
 		// TODO Auto-generated method stub
 		return false;
 	}
