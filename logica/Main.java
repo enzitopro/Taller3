@@ -75,15 +75,23 @@ public class Main {
 						}
 						break;
 					case 5:
-						//modificarHechizo();
+						System.out.print("Ingrese el nombre del hechizo a modificar: ");
+						String nombreMod = lector.nextLine();
+						System.out.print("Ingrese el nuevo valor de daño: ");
+						int nuevoDano = Integer.valueOf(lector.nextLine());
+						if (sistema.modificarHechizo(nombreMod, nuevoDano)) {
+							System.out.println("Se modifico con exito el hechizo "+nombreMod+"!");
+						} else {
+							System.out.println("No se pudo modificar el hechizo "+nombreMod+"!");
+						}
 						break;
 					case 6:
 						System.out.print("Ingrese el nombre del hechizo a eliminar: ");
-						String nombre = lector.nextLine();
-						if (sistema.eliminarHechizo(nombre)) {
-							System.out.println("Se eliminó el hechizo "+nombre+"!");
+						String nombreDel = lector.nextLine();
+						if (sistema.eliminarHechizo(nombreDel)) {
+							System.out.println("Se eliminó el hechizo "+nombreDel+"!");
 						} else {
-							System.out.println("No se pudo eliminar el hechizo "+nombre+"!");
+							System.out.println("No se pudo eliminar el hechizo "+nombreDel+"!");
 						}
 						break;
 					}

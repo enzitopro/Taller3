@@ -231,4 +231,17 @@ public class SistemaImpl implements ISistema {
 		}
 		return false;
 	}
+
+	@Override
+	public boolean modificarHechizo(String nombre, int nuevoDano) {
+		for (int i=0; i < listaGlobalHechizos.size(); i++) {
+			Hechizo hechizoActual = listaGlobalHechizos.get(i);
+			if (hechizoActual.getNombre().equalsIgnoreCase(nombre)) {
+				hechizoActual.setDano(nuevoDano);
+				actualizarArchivoHechizos();
+				return true;
+			}
+		}
+		return false;
+	}
 }
