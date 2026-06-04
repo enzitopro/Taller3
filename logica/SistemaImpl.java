@@ -77,13 +77,15 @@ public class SistemaImpl implements ISistema {
 				String[] partesMago = linea.split(";");
 				String nombre = partesMago[0];
 				Mago nuevoMago = new Mago(nombre);
-				String magoHechizos = partesMago[1];
-				String[] nombresHechizos = magoHechizos.split("\\|");
-				for (int i = 0; i < nombresHechizos.length; i++) {
-					Hechizo hechizoEncontrado = buscarHechizo(nombresHechizos[i]);
-					if (hechizoEncontrado != null) {
-						nuevoMago.getListaHechizos().add(hechizoEncontrado);
-					}
+				if (partesMago.length > 1) {
+					String magoHechizos = partesMago[1];
+					String[] nombresHechizos = magoHechizos.split("\\|");
+					for (int i = 0; i < nombresHechizos.length; i++) {
+						Hechizo hechizoEncontrado = buscarHechizo(nombresHechizos[i]);
+						if (hechizoEncontrado != null) {
+							nuevoMago.getListaHechizos().add(hechizoEncontrado);
+						}
+					}		
 				}
 				listaGlobalMagos.add(nuevoMago);
 			}
