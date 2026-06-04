@@ -50,11 +50,13 @@ public class Main {
 							System.out.print("Ingrese el nuevo nombre del mago: ");
 							String nuevoNombre = lector.nextLine();
 							sistema.modificarNombreMago(nombreMagoModificar, nuevoNombre);
+							break;
 						case 2:
 							sistema.mostrarTodosHechizos(false);
 							System.out.print("Ingrese el nombre del hechizo que aprenderá: ");
 							String hechizoAprender = lector.nextLine();
 							sistema.aprenderHechizoMago(nombreMagoModificar, hechizoAprender);
+							break;
 						case 3:
 							String listaHechizosMagoMod = sistema.mostrarHechizosMago(nombreMagoModificar);
 							System.out.println("Hechizos de " + nombreMagoModificar);
@@ -74,6 +76,7 @@ public class Main {
 							} else {
 								System.out.println("Operacion cancelada. Volviendo al menu principal...");
 							}
+							break;
 						}
 						break;
 					case 3:
