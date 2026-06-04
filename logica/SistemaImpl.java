@@ -16,7 +16,7 @@ import java.util.Scanner;
 public class SistemaImpl implements ISistema {
 	private ArrayList<Hechizo> listaGlobalHechizos;
 	private ArrayList<Mago> listaGlobalMagos;
-	
+
 	public SistemaImpl() {
 		this.listaGlobalHechizos = new ArrayList<>();
 		this.listaGlobalMagos = new ArrayList<>();
@@ -57,13 +57,14 @@ public class SistemaImpl implements ISistema {
 					HechizoAgua hechizoAgua = new HechizoAgua(nombre, tipo, dano, cantidadHeal, presionDeAgua);
 					listaGlobalHechizos.add(hechizoAgua);
 				}
-				
+
 			}
-		lectorHechizos.close();
+			lectorHechizos.close();
 		} catch (Exception e) {
-			System.out.println("Archivo no encontrado");
+			System.out.println("Error al cargar el archivo de hechizos");
 		}
-		// System.out.println("EXITO: Se han cargado "+listaGlobalHechizos.size()+ " hechizos en el sistema");
+		// System.out.println("EXITO: Se han cargado "+listaGlobalHechizos.size()+ "
+		// hechizos en el sistema");
 	}
 
 	@Override
@@ -75,10 +76,10 @@ public class SistemaImpl implements ISistema {
 				String linea = lectorMagos.nextLine();
 				String[] partesMago = linea.split(";");
 				String nombre = partesMago[0];
-				Mago nuevoMago = new Mago(nombre);	
+				Mago nuevoMago = new Mago(nombre);
 				String magoHechizos = partesMago[1];
 				String[] nombresHechizos = magoHechizos.split("\\|");
-				for (int i=0; i < nombresHechizos.length; i++) {
+				for (int i = 0; i < nombresHechizos.length; i++) {
 					Hechizo hechizoEncontrado = buscarHechizo(nombresHechizos[i]);
 					if (hechizoEncontrado != null) {
 						nuevoMago.getListaHechizos().add(hechizoEncontrado);
@@ -88,11 +89,12 @@ public class SistemaImpl implements ISistema {
 			}
 			lectorMagos.close();
 		} catch (Exception e) {
-			System.out.println("Archivo no encontrado");
+			System.out.println("Error al cargar el archivo de magos.");
 		}
-		// System.out.println("EXITO: Se han cargado:"+listaGlobalMagos.size()+" magos en el sistema");
+		// System.out.println("EXITO: Se han cargado:"+listaGlobalMagos.size()+" magos
+		// en el sistema");
 	}
-	
+
 	private Hechizo buscarHechizo(String nombreBuscado) {
 		for (Hechizo hechizo : listaGlobalHechizos) {
 			if (hechizo.getNombre().equalsIgnoreCase(nombreBuscado)) {
@@ -120,7 +122,7 @@ public class SistemaImpl implements ISistema {
 		System.out.println("--- LISTA DE MAGOS ---");
 		for (Mago mago : listaGlobalMagos) {
 			if (mostrarPuntaje) {
-				System.out.println("Nombre: " + mago.getNombre() + " - Puntaje: "+ mago.calcularPuntajeTotal());
+				System.out.println("Nombre: " + mago.getNombre() + " - Puntaje: " + mago.calcularPuntajeTotal());
 			} else {
 				System.out.println("Nombre: " + mago.getNombre());
 			}
@@ -130,11 +132,11 @@ public class SistemaImpl implements ISistema {
 
 	@Override
 	public void mostrarTopHechizos() {
-		for (int i=0; i<listaGlobalHechizos.size()-1;i++) {
-			for (int j=0;j<listaGlobalHechizos.size();j++) {
+		for (int i = 0; i < listaGlobalHechizos.size() - 1; i++) {
+			for (int j = 0; j < listaGlobalHechizos.size(); j++) {
 				Hechizo hechizo1 = listaGlobalHechizos.get(i);
 				Hechizo hechizo2 = listaGlobalHechizos.get(j);
-				
+
 				if (hechizo1.calcularPuntuacion() > hechizo2.calcularPuntuacion()) {
 					Hechizo temp = hechizo1;
 					listaGlobalHechizos.set(i, hechizo2);
@@ -144,20 +146,20 @@ public class SistemaImpl implements ISistema {
 		}
 		System.out.println("--- TOP 10 HECHIZOS ---");
 		int limite = Math.min(10, listaGlobalHechizos.size());
-		for (int i=0; i<limite;i++) {
+		for (int i = 0; i < limite; i++) {
 			Hechizo h = listaGlobalHechizos.get(i);
-			System.out.println((i+1)+ ". "+h.getNombre()+" - Puntos: "+h.calcularPuntuacion());
+			System.out.println((i + 1) + ". " + h.getNombre() + " - Puntos: " + h.calcularPuntuacion());
 		}
 		System.out.println("-------------------");
 	}
 
 	@Override
 	public void mostrarTopMagos() {
-		for (int i=0; i<listaGlobalMagos.size()-1;i++) {
-			for (int j=0; j<listaGlobalMagos.size();j++) {
+		for (int i = 0; i < listaGlobalMagos.size() - 1; i++) {
+			for (int j = 0; j < listaGlobalMagos.size(); j++) {
 				Mago mago1 = listaGlobalMagos.get(i);
 				Mago mago2 = listaGlobalMagos.get(j);
-				if (mago1.calcularPuntajeTotal()>mago2.calcularPuntajeTotal()) {
+				if (mago1.calcularPuntajeTotal() > mago2.calcularPuntajeTotal()) {
 					Mago temp = mago1;
 					listaGlobalMagos.set(i, mago2);
 					listaGlobalMagos.set(j, temp);
@@ -166,41 +168,41 @@ public class SistemaImpl implements ISistema {
 		}
 		System.out.println("--- TOP 3 MAGOS ---");
 		int limite = Math.min(3, listaGlobalHechizos.size());
-		for (int i=0; i<limite;i++) {
+		for (int i = 0; i < limite; i++) {
 			Mago m = listaGlobalMagos.get(i);
-			System.out.println((i+1)+". "+m.getNombre()+" - Puntos: "+m.calcularPuntajeTotal());
+			System.out.println((i + 1) + ". " + m.getNombre() + " - Puntos: " + m.calcularPuntajeTotal());
 		}
 		System.out.println("-------------------");
 	}
-	
+
 	private void actualizarArchivoHechizos() {
 		try {
 			FileWriter archivo = new FileWriter("Hechizos.txt");
 			BufferedWriter escritor = new BufferedWriter(archivo);
-			
+
 			for (Hechizo h : listaGlobalHechizos) {
-				escritor.write(h.generarLineaArchivo()); 
+				escritor.write(h.generarLineaArchivo());
 				escritor.newLine();
 			}
-			
+
 			escritor.close();
 			System.out.println("Archivo de hechizos actualizado correctamente.");
-			
+
 		} catch (Exception e) {
 			System.out.println("Error al intentar escribir en el archivo.");
 		}
 	}
-	
+
 	private void actualizarArchivoMagos() {
 		try {
 			FileWriter archivo = new FileWriter("Magos.txt");
 			BufferedWriter escritor = new BufferedWriter(archivo);
-			
+
 			for (Mago m : listaGlobalMagos) {
 				escritor.write(m.generarLineaArchivo());
 				escritor.newLine();
 			}
-			
+
 			escritor.close();
 		} catch (Exception e) {
 			System.out.println("Error al intentar escribir en el archivo.");
@@ -237,7 +239,7 @@ public class SistemaImpl implements ISistema {
 
 	@Override
 	public boolean eliminarHechizo(String nombre) {
-		for (int i=0; i < listaGlobalHechizos.size(); i++) {
+		for (int i = 0; i < listaGlobalHechizos.size(); i++) {
 			Hechizo hechizoActual = listaGlobalHechizos.get(i);
 			if (hechizoActual.getNombre().equalsIgnoreCase(nombre)) {
 				listaGlobalHechizos.remove(i);
@@ -250,7 +252,7 @@ public class SistemaImpl implements ISistema {
 
 	@Override
 	public boolean modificarHechizo(String nombre, int nuevoDano) {
-		for (int i=0; i < listaGlobalHechizos.size(); i++) {
+		for (int i = 0; i < listaGlobalHechizos.size(); i++) {
 			Hechizo hechizoActual = listaGlobalHechizos.get(i);
 			if (hechizoActual.getNombre().equalsIgnoreCase(nombre)) {
 				hechizoActual.setDano(nuevoDano);
@@ -270,9 +272,9 @@ public class SistemaImpl implements ISistema {
 
 	@Override
 	public boolean eliminarMago(String nombre) {
-		for (int i=0; i<listaGlobalMagos.size();i++) {
+		for (int i = 0; i < listaGlobalMagos.size(); i++) {
 			Mago magoActual = listaGlobalMagos.get(i);
-			
+
 			if (magoActual.getNombre().equalsIgnoreCase(nombre)) {
 				listaGlobalMagos.remove(i);
 				actualizarArchivoMagos();
@@ -284,7 +286,7 @@ public class SistemaImpl implements ISistema {
 
 	@Override
 	public boolean modificarNombreMago(String nombreAntiguo, String nombreNuevo) {
-		for (int i=0; i<listaGlobalMagos.size();i++) {
+		for (int i = 0; i < listaGlobalMagos.size(); i++) {
 			Mago magoActual = listaGlobalMagos.get(i);
 			if (magoActual.getNombre().equalsIgnoreCase(nombreAntiguo)) {
 				magoActual.setNombre(nombreNuevo);
@@ -297,20 +299,40 @@ public class SistemaImpl implements ISistema {
 
 	@Override
 	public boolean aprenderHechizoMago(String nombreMago, String nombreHechizo) {
-		for (int i=0; i < listaGlobalMagos.size(); i++) {
+		for (int i = 0; i < listaGlobalMagos.size(); i++) {
+
 			Mago magoActual = listaGlobalMagos.get(i);
-			for (int j=0; j < listaGlobalHechizos.size();j++) {
-				Hechizo hechizoActual = listaGlobalHechizos.get(j);
-				
+			if (magoActual.getNombre().equalsIgnoreCase(nombreMago)) {
+
+				for (int j = 0; j < listaGlobalHechizos.size(); j++) {
+					Hechizo hechizoActual = listaGlobalHechizos.get(j);
+					if (hechizoActual.getNombre().equalsIgnoreCase(nombreHechizo)) {
+						magoActual.getListaHechizos().add(hechizoActual);
+						actualizarArchivoMagos();
+						return true;
+					}
+				}
 			}
-			
+
 		}
 		return false;
 	}
 
 	@Override
 	public boolean olvidarHechizoMago(String nombreMago, String nombreHechizo) {
-		// TODO Auto-generated method stub
+		for (int i = 0; i < listaGlobalMagos.size(); i++) {
+			Mago magoActual = listaGlobalMagos.get(i);
+			if (magoActual.getNombre().equalsIgnoreCase(nombreMago)) {
+				for (int j = 0; j < magoActual.getListaHechizos().size(); j++) {
+					Hechizo hechizoActual = magoActual.getListaHechizos().get(j);
+					if (hechizoActual.getNombre().equalsIgnoreCase(nombreHechizo)) {
+						magoActual.getListaHechizos().remove(j);
+						actualizarArchivoMagos();
+						return true;
+					}
+				}
+			}
+		}
 		return false;
 	}
 

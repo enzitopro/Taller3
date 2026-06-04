@@ -26,6 +26,7 @@ public class Main {
 					System.out.println("4. Agregar Hechizo");
 					System.out.println("5. Modificar Hechizo");
 					System.out.println("6. Eliminar Hechizo");
+					System.out.println("- Ingrese otro valor para volver.");
 					System.out.print("> ");
 					int opcionAdmin = Integer.valueOf(lector.nextLine());
 					switch (opcionAdmin) {
