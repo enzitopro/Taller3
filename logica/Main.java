@@ -36,7 +36,45 @@ public class Main {
 						sistema.agregarMago(nombreMagoNuevo);
 						break;
 					case 2:
-						//modificarMago();
+						System.out.println("Ingrese el nombre del mago a modificar: ");
+						String nombreMagoModificar = lector.nextLine();
+						System.out.println("Que desea modificar de " + nombreMagoModificar + "?");
+						System.out.println("1) Cambiar el nombre.");
+						System.out.println("2) Aprender nuevo hechizo.");
+						System.out.println("3) Eliminar un hechizo");
+						System.out.print("> ");
+						
+						int opcionMod = Integer.valueOf(lector.nextLine());
+						switch (opcionMod) {
+						case 1:
+							System.out.print("Ingrese el nuevo nombre del mago: ");
+							String nuevoNombre = lector.nextLine();
+							sistema.modificarNombreMago(nombreMagoModificar, nuevoNombre);
+						case 2:
+							sistema.mostrarTodosHechizos(false);
+							System.out.print("Ingrese el nombre del hechizo que aprenderá: ");
+							String hechizoAprender = lector.nextLine();
+							sistema.aprenderHechizoMago(nombreMagoModificar, hechizoAprender);
+						case 3:
+							String listaHechizosMagoMod = sistema.mostrarHechizosMago(nombreMagoModificar);
+							System.out.println("Hechizos de " + nombreMagoModificar);
+							System.out.println(listaHechizosMagoMod);
+							
+							if (!listaHechizosMagoMod.contains("posee") && !listaHechizosMagoMod.contains("Error")) {
+								System.out.println("Ingrese el nombre del hechizo a eliminar: ");
+								String hechizoEliminar = lector.nextLine();
+								
+								
+								if (sistema.olvidarHechizoMago(nombreMagoModificar, hechizoEliminar)) {
+									System.out.println("Se elimino el hechizo correctamente.");
+								} else {
+									System.out.println("No se pudo eliminar. Verifique que el nombre sea correcto");
+								}
+								
+							} else {
+								System.out.println("Operacion cancelada. Volviendo al menu principal...");
+							}
+						}
 						break;
 					case 3:
 						System.out.print("Ingrese el nombre del mago a eliminar: ");

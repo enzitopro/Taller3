@@ -337,5 +337,22 @@ public class SistemaImpl implements ISistema {
 		}
 		return false;
 	}
+	
+	public String mostrarHechizosMago(String nombreMago) {
+		String texto = "";
+		for (Mago m : listaGlobalMagos) {
+			if (m.getNombre().equalsIgnoreCase(nombreMago)) {
+				if (m.getListaHechizos().isEmpty()) {
+					return "Este mago no posee ningun hechizo";
+				} else {
+					for (Hechizo h : m.getListaHechizos()) {
+						texto += "- " + h.getNombre() + "\n";
+					}
+					return texto;
+				}
+			}
+		}
+		return "Error: el mago no existe";
+	}
 
 }
