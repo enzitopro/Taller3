@@ -17,5 +17,6 @@ autores: enzitopro & justamago
  ┃ ┣ 📜 Main.java             
  ┃ ┗ 📜 SistemaImpl.java      
  ┣ 📜 Hechizos.txt           
- ┣ 📜 Magos.txt               
+ ┣ 📜 Magos.txt
+ ┣ 📜 DiagramaDeClase.pdf                  
  ┗ 📜 README.md               
