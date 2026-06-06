@@ -30,10 +30,6 @@ public class Mago {
 	public ArrayList<Hechizo> getListaHechizos() {
 		return listaHechizos;
 	}
-
-	public void setListaHechizos(ArrayList<Hechizo> listaHechizos) {
-		this.listaHechizos = listaHechizos;
-	}
 	
 	public String generarLineaArchivo() {
 		String linea = this.nombre + ";";
