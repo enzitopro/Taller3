@@ -1,22 +1,21 @@
 # Taller 3
 autores: enzitopro & justamago
 
-
+# Esta es la estructura del proyecto
 ```text
 📦 Proyecto
- ┣ 📂 src
- ┃ ┣ 📂 dominio                 
- ┃ ┃ ┣ 📜 Hechizo.java          
- ┃ ┃ ┣ 📜 HechizoAgua.java
- ┃ ┃ ┣ 📜 HechizoFuego.java
- ┃ ┃ ┣ 📜 HechizoPlanta.java
- ┃ ┃ ┣ 📜 HechizoTierra.java
- ┃ ┃ ┣ 📜 IPuntuable.java       
- ┃ ┃ ┗ 📜 Mago.java
- ┃ ┗ 📂 logica                  
- ┃   ┣ 📜 ISistema.java         
- ┃   ┣ 📜 Main.java             
- ┃   ┗ 📜 SistemaImpl.java      
- ┣ 📜 Hechizos.txt              
- ┣ 📜 Magos.txt                 
- ┗ 📜 README.md                 
+ ┣ 📂 dominio                 
+ ┃ ┣ 📜 Hechizo.java          
+ ┃ ┣ 📜 HechizoAgua.java
+ ┃ ┣ 📜 HechizoFuego.java
+ ┃ ┣ 📜 HechizoPlanta.java
+ ┃ ┣ 📜 HechizoTierra.java
+ ┃ ┣ 📜 IPuntuable.java      
+ ┃ ┗ 📜 Mago.java
+ ┣ 📂 logica                  
+ ┃ ┣ 📜 ISistema.java         
+ ┃ ┣ 📜 Main.java             
+ ┃ ┗ 📜 SistemaImpl.java      
+ ┣ 📜 Hechizos.txt           
+ ┣ 📜 Magos.txt               
+ ┗ 📜 README.md               
